@@ -36,11 +36,13 @@ where date(p.payment_date) = '2005-07-30' and p.payment_date = r.rental_date and
 
 И попробую выполнить оптимизированый запрос
 
+```sql
 select concat(c.last_name, ' ', c.first_name), sum(p.amount)
 from payment p
 inner join rental r on r.rental_date = p.payment_date
 inner join customer c on c.customer_id = r.customer_id 
 where p.payment_date between '2005-07-30 00:00:00' and '2005-07-30 23:59:59'
-group by c.last_name, c.first_name, c.customer_id
+group by c.last_name, c.first_name, c.customer_id  
+```
 
-![Скриншот 3](https://github.com/Wanderwille/scrinshot/blob/main/оптимизация%20запроса.png)
+![Скриншот 3](https://github.com/Wanderwille/scrinshot/blob/main/explain2%20.png)
